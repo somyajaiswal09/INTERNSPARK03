@@ -1,2 +1,99 @@
 # INTERNSPARK03
 Data analysis project
+# ============================================
+# DATA ANALYSIS PROJECT USING PANDAS
+# ============================================
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# --------------------------------------------
+# 1. LOAD THE DATASET
+# --------------------------------------------
+
+# Load CSV file
+df = pd.read_csv("sales_data.csv")
+
+print("First 5 rows:")
+print(df.head())
+
+print("\nDataset Information:")
+print(df.info())
+
+# --------------------------------------------
+# 2. CHECK FOR MISSING VALUES
+# --------------------------------------------
+
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# Remove rows containing missing values
+df = df.dropna()
+
+# --------------------------------------------
+# 3. REMOVE DUPLICATE RECORDS
+# --------------------------------------------
+
+print("\nNumber of duplicates:", df.duplicated().sum())
+
+df = df.drop_duplicates()
+
+# --------------------------------------------
+# 4. BASIC DATA INFORMATION
+# --------------------------------------------
+
+print("\nDataset Shape:")
+print(df.shape)
+
+print("\nColumn Names:")
+print(df.columns)
+
+print("\nSummary Statistics:")
+print(df.describe())
+
+# --------------------------------------------
+# 5. FILTERING DATA
+# --------------------------------------------
+
+# Example: products with sales greater than 500
+high_sales = df[df["Sales"] > 500]
+
+print("\nProducts with Sales Greater Than 500:")
+print(high_sales)
+
+# --------------------------------------------
+# 6. GROUPING DATA
+# --------------------------------------------
+
+# Total sales by product
+sales_by_product = df.groupby("Product")["Sales"].sum()
+
+print("\nTotal Sales by Product:")
+print(sales_by_product)
+
+# Total sales by category
+sales_by_category = df.groupby("Category")["Sales"].sum()
+
+print("\nTotal Sales by Category:")
+print(sales_by_category)
+
+# --------------------------------------------
+# 7. AVERAGE SALES
+# --------------------------------------------
+
+average_sales = df["Sales"].mean()
+
+print("\nAverage Sales:", average_sales)
+
+# --------------------------------------------
+# 8. HIGHEST AND LOWEST SALES
+# --------------------------------------------
+
+highest_sales = df["Sales"].max()
+lowest_sales = df["Sales"].min()
+
+print("\nHighest Sales:", highest_sales)
+print("Lowest Sales:", lowest_sales)
+
+# --------------------------------------------
+# 9. FIND BEST-
